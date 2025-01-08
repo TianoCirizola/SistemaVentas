@@ -1,0 +1,12 @@
+CORREO CUENTA: sistemaventas25@gmail.com
+CONTRASEÑA: Sistemaventas2025
+
+CONTRASEÑA DE APLICACION GENERADA POR GOOGLE: puku qcti ypcp hdss
+
+Usuario FIREBASE authentication:
+	CORREO: tianocirizola@gmail.com
+	CONTRASEÑA: SistemaventasTiano
+
+URL STORAGE FIREBASE: sistemaventas-83d5d.firebasestorage.app
+
+CLAVE API FIREBASE: AIzaSyBNLIVptJx8nb2aD8hyrDD5fahro4GkOYM
