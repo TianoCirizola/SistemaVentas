@@ -5,12 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using SistemaVenta.Entity;
 
-namespace SistemaVenta.BLL.Interfaces
-{
-    public interface IRolService
-    {
+namespace SistemaVenta.BLL.Interfaces {
+
+    public interface IRolService {
+
         Task<List<Rol>> Lista();
-
-
     }
 }

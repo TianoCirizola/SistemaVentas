@@ -61,7 +61,7 @@ namespace SistemaVenta.DAL.Implementacion
             }
         }
 
-        public async Task<bool> Elimnar(TEntity entidad)
+        public async Task<bool> Eliminar(TEntity entidad)
         {
             try
             {

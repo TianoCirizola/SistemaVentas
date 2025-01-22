@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SistemaVenta.BLL.Interfaces
-{
-    public interface IFireBaseService
-    {
+namespace SistemaVenta.BLL.Interfaces {
+
+    public interface IFireBaseService {
+
         Task<string> SubirStorage(Stream StreamArhivo, string CarpetaDestino, string NombreArchivo);
         Task<bool> EliminarStorage(string CarpetaDestino, string NombreArchivo);
     }

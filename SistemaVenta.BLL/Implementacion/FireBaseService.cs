@@ -11,19 +11,17 @@ using SistemaVenta.Entity;
 using SistemaVenta.DAL.Interfaces;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 
-namespace SistemaVenta.BLL.Implementacion
-{
-    public class FireBaseService : IFireBaseService
-    {
+namespace SistemaVenta.BLL.Implementacion {
+
+    public class FireBaseService : IFireBaseService {
+
         private readonly IGenericRepository<Configuracion> _repositorio;
 
-        public FireBaseService(IGenericRepository<Configuracion> repositorio)
-        {
+        public FireBaseService(IGenericRepository<Configuracion> repositorio) {
             _repositorio = repositorio;
         }
 
-        public async Task<bool> EliminarStorage(string CarpetaDestino, string NombreArchivo)
-        {
+        public async Task<bool> EliminarStorage(string CarpetaDestino, string NombreArchivo) {
             try {
                 IQueryable<Configuracion> query = await _repositorio.Consultar(c => c.Recurso.Equals("FireBase_Storage"));
 
@@ -36,8 +34,7 @@ namespace SistemaVenta.BLL.Implementacion
 
                 var task = new FirebaseStorage(
                     Config["ruta"],
-                    new FirebaseStorageOptions
-                    {
+                    new FirebaseStorageOptions {
                         AuthTokenAsyncFactory = () => Task.FromResult(a.FirebaseToken),
                         ThrowOnCancel = true
                     })
@@ -49,18 +46,15 @@ namespace SistemaVenta.BLL.Implementacion
 
                 return true;
             }
-            catch
-            {
+            catch {
                 return false;
             }
         }
 
-        public async Task<string> SubirStorage(Stream StreamArchivo, string CarpetaDestino, string NombreArchivo)
-        {
+        public async Task<string> SubirStorage(Stream StreamArchivo, string CarpetaDestino, string NombreArchivo) {
             string UrlImagen = "";
 
-            try
-            {
+            try {
                 IQueryable<Configuracion> query = await _repositorio.Consultar(c => c.Recurso.Equals("FireBase_Storage"));
 
                 Dictionary<string, string> Config = query.ToDictionary(keySelector: c => c.Propiedad, elementSelector: c => c.Valor);
@@ -72,8 +66,7 @@ namespace SistemaVenta.BLL.Implementacion
 
                 var task = new FirebaseStorage(
                     Config["ruta"],
-                    new FirebaseStorageOptions
-                    {
+                    new FirebaseStorageOptions {
                         AuthTokenAsyncFactory = () => Task.FromResult(a.FirebaseToken),
                         ThrowOnCancel = true
                     })
@@ -84,8 +77,7 @@ namespace SistemaVenta.BLL.Implementacion
                 UrlImagen = await task;
 
             }
-            catch
-            {
+            catch {
                 UrlImagen = "";
             }
 

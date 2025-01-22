@@ -1,11 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace SistemaVenta.AplicacionWeb.Controllers
-{
-    public class Plantilla : Controller
-    {
-        public IActionResult EnviarClave(string correo, string clave)
-        {
+namespace SistemaVenta.AplicacionWeb.Controllers {
+
+    public class Plantilla : Controller {
+
+        public IActionResult EnviarClave(string correo, string clave) {
             ViewData["Correo"] = correo;
             ViewData["Clave"] = clave;
             ViewData["Url"] = $"{this.Request.Scheme}://{this.Request.Host}";
@@ -13,8 +12,7 @@ namespace SistemaVenta.AplicacionWeb.Controllers
             return View();
         }
 
-        public IActionResult RestablecerClave(string clave)
-        {
+        public IActionResult RestablecerClave(string clave) {
             ViewData["Clave"] = clave;
 
             return View();
