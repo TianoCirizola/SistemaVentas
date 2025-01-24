@@ -35,7 +35,7 @@ namespace SistemaVenta.BLL.Implementacion {
         public async Task<Usuario> Crear(Usuario entidad, Stream Foto = null, string NombreFoto = "", string UrlPlantillaCorreo = "") {
             Usuario existeUsuario = await _repositorio.Obtener(u => u.Correo == entidad.Correo);
 
-            if (existeUsuario == null) throw new TaskCanceledException("El correo ya existe");
+            if (existeUsuario != null) throw new TaskCanceledException("El correo ya existe");
 
             try {
                 string claveGenerada = _utilidadesService.GenerarClave();
@@ -89,7 +89,7 @@ namespace SistemaVenta.BLL.Implementacion {
         public async Task<Usuario> Editar(Usuario entidad, Stream Foto = null, string NombreFoto = "") {
             Usuario existeUsuario = await _repositorio.Obtener(u => u.Correo == entidad.Correo && u.IdUsuario != entidad.IdUsuario);
 
-            if (existeUsuario == null) throw new TaskCanceledException("El correo ya existe");
+            if (existeUsuario != null) throw new TaskCanceledException("El correo ya existe");
 
             try {
                 IQueryable<Usuario> queryUsuario = await _repositorio.Consultar(u => u.IdUsuario == entidad.IdUsuario);
@@ -99,6 +99,7 @@ namespace SistemaVenta.BLL.Implementacion {
                 usuarioEditar.Correo = entidad.Correo;
                 usuarioEditar.Telefono = entidad.Telefono;
                 usuarioEditar.IdRol = entidad.IdRol;
+                usuarioEditar.EsActivo = entidad.EsActivo;
 
                 if (usuarioEditar.NombreFoto == "") usuarioEditar.NombreFoto = NombreFoto;
 

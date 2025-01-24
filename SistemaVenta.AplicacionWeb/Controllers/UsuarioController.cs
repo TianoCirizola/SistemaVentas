@@ -6,8 +6,6 @@ using SistemaVenta.AplicacionWeb.Models.ViewModels;
 using SistemaVenta.AplicacionWeb.Utilidades.Response;
 using SistemaVenta.BLL.Interfaces;
 using SistemaVenta.Entity;
-using Microsoft.Identity.Client;
-using SistemaVenta.AplicacionWeb.Utilidaades.Response;
 
 namespace SistemaVenta.AplicacionWeb.Controllers {
 
@@ -51,9 +49,9 @@ namespace SistemaVenta.AplicacionWeb.Controllers {
                 Stream fotoStream = null;
 
                 if (foto != null) {
-                    string nombre_en_codigo = Guid.NewGuid().ToString("N");
+                    string nombreEnCodigo = Guid.NewGuid().ToString("N");
                     string extension = Path.GetExtension(foto.FileName);
-                    nombreFoto = string.Concat(nombre_en_codigo, extension);
+                    nombreFoto = string.Concat(nombreEnCodigo, extension);
                     fotoStream = foto.OpenReadStream();
                 }
 

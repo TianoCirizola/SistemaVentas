@@ -1,0 +1,20 @@
+Capa Entity -> capa para EntityFramework (estan las clases de cada tabla con sus atributos, etc).
+
+Capa BLL -> Capa de lógica de negocio, ahi se encuentra UsuarioService, CorreoService, etc. Cada clase tiene metodos para la gestion de cada entidad, usan la capa Entity y DAL para interactuar con la BD.
+
+Capa DAL -> Capa de acceso a los datos, se encuentra el IGenericRepository, etc. Son los repositorios que tienen las funciones para poder interactuar con la BD (leer, escribir, actualizar, etc)).
+
+Capa AplicacionWeb -> Donde se encuentra la app, los modelos, vistas, controladores, etc. Los controladores tienen 1 o más vistas asociadas que se renderizan donde se indique en el archivo "_Layout.cshtml".
+    también los controladores tienen las funciones de peticiones HTTP, en general retornan JSON o un formato para que entiendan los DataTable.
+    
+    ViewModels: son clases que indican que atributos tendrá cada objeto de cada entidad en una vista, no tienen porque ser los mismos que usan en la BD (en general se usa mas strings para poder mostrar.
+    
+    El AutoMapper es para mapear de un viewModel a un objeto Entity o viceversa (se especifica todo dentro del archivo "AutoMapperProfile").
+    
+    Cada funcion de peticion HTTP usa los Map del AutoMapper, si es un GET retorna todo en ViewModel para que pueda leerse desde la vista. Si es un POST o PUT se pasa de ViewModel a objeto Entity para poder insertarlo en la BD por ejemplo.
+    
+    Las funciones de peticiones se usan desde los archivos js, cada peticion retorna un objeto de GenericResponse que contiene un estado, mensaje, objeto, etc. para que cuando se haga el fetch (peticion) desde js se pueda saber como resultó la peticion HTTP.
+    
+Capa IOC -> Donde se encuentran las dependencias del proyecto (la inyeccion de dependencias).
+
+FireBase -> Se usa como hosting para las imagenes de los usuarios o lo que sea.

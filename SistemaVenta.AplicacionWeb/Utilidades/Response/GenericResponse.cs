@@ -1,4 +1,4 @@
-﻿namespace SistemaVenta.AplicacionWeb.Utilidaades.Response
+﻿namespace SistemaVenta.AplicacionWeb.Utilidades.Response
 {
     public class GenericResponse<TObject>
     {

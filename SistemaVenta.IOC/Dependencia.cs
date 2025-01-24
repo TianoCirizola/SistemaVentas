@@ -13,14 +13,13 @@ using SistemaVenta.DAL.Implementacion;
 using SistemaVenta.BLL.Interfaces;
 using SistemaVenta.BLL.Implementacion;
 
-namespace SistemaVenta.IOC
-{
-    public static class Dependencia
-    {
-        public static void InyectarDependencia(this IServiceCollection services, IConfiguration Configuration)
-        {
-            services.AddDbContext<DbventaContext>(options =>
-            {
+namespace SistemaVenta.IOC {
+
+    public static class Dependencia {
+
+        public static void InyectarDependencia(this IServiceCollection services, IConfiguration Configuration) {
+
+            services.AddDbContext<DbventaContext>(options => {
                 options.UseSqlServer(Configuration.GetConnectionString("CadenaSQL"));
             });
 
