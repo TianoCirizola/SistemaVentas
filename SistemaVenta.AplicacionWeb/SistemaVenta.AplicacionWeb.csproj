@@ -7,8 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Utilidades\Res\**" />
+    <Content Remove="Utilidades\Res\**" />
+    <EmbeddedResource Remove="Utilidades\Res\**" />
+    <None Remove="Utilidades\Res\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
+    <PackageReference Include="DinkToPdf" Version="1.0.8" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.7" />
   </ItemGroup>
 
@@ -19,7 +27,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Utilidades\Res\" />
+    <None Update="Utilidades\LibreriaPDF\libwkhtmltox.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Utilidades\LibreriaPDF\libwkhtmltox.dylib">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Utilidades\LibreriaPDF\libwkhtmltox.so">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

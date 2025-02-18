@@ -9,27 +9,22 @@ using SistemaVenta.DAL.DBContext;
 using SistemaVenta.DAL.Interfaces;
 using SistemaVenta.Entity;
 
-namespace SistemaVenta.DAL.Implementacion
-{
-    public class VentaRepository : GenericRepository<Venta>, IVentaRepository
-    {
+namespace SistemaVenta.DAL.Implementacion {
+
+    public class VentaRepository : GenericRepository<Venta>, IVentaRepository {
+
         private readonly DbventaContext _dbContext;
 
-        public VentaRepository(DbventaContext dbContext) : base(dbContext)
-        {
+        public VentaRepository(DbventaContext dbContext) : base(dbContext) {
             _dbContext = dbContext;
         }
 
-        public async Task<Venta> Registrar(Venta entidad)
-        {
+        public async Task<Venta> Registrar(Venta entidad) {
             Venta ventaGenerada = new Venta();
 
-            using (var transaction = _dbContext.Database.BeginTransaction())
-            {
-                try
-                {
-                    foreach (DetalleVenta dv in entidad.DetalleVenta)
-                    {
+            using (var transaction = _dbContext.Database.BeginTransaction()) {
+                try {
+                    foreach (DetalleVenta dv in entidad.DetalleVenta) {
                         Producto productoEncontrado = _dbContext.Productos.Where(p => p.IdProducto == dv.IdProducto).First();
 
                         productoEncontrado.Stock = productoEncontrado.Stock - dv.Cantidad;
@@ -46,7 +41,7 @@ namespace SistemaVenta.DAL.Implementacion
 
                     string ceros = string.Concat(Enumerable.Repeat("0", correlativo.CantidadDigitos.Value));
                     string numeroVenta = ceros + correlativo.UltimoNumero.ToString();
-                    numeroVenta.Substring(numeroVenta.Length - correlativo.CantidadDigitos.Value, correlativo.CantidadDigitos.Value);
+                    numeroVenta = numeroVenta.Substring(numeroVenta.Length - correlativo.CantidadDigitos.Value, correlativo.CantidadDigitos.Value);
 
                     entidad.NumeroVenta = numeroVenta;
 
@@ -58,8 +53,7 @@ namespace SistemaVenta.DAL.Implementacion
                     transaction.Commit();
 
                 }
-                catch (Exception ex)
-                {
+                catch (Exception ex) {
                     transaction.Rollback();
                     throw ex;
                 }
@@ -67,8 +61,7 @@ namespace SistemaVenta.DAL.Implementacion
             return ventaGenerada;
         }
 
-        public async Task<List<DetalleVenta>> Reporte(DateTime FechaInicio, DateTime FechaFin)
-        {
+        public async Task<List<DetalleVenta>> Reporte(DateTime FechaInicio, DateTime FechaFin) {
             List<DetalleVenta> listaResumen = await _dbContext.DetalleVenta
                 .Include(v => v.IdVentaNavigation)
                 .ThenInclude(u => u.IdUsuarioNavigation)
