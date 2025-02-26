@@ -1,3 +1,7 @@
+INICIAR SESION EN EL SISTEMA:
+    correo -> codigo@example.com
+    contraseña -> 123
+
 CORREO CUENTA: sistemaventas25@gmail.com
 CONTRASEÑA: Sistemaventas2025
 

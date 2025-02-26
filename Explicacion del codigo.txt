@@ -14,6 +14,7 @@ Capa AplicacionWeb -> Donde se encuentra la app, los modelos, vistas, controlado
     Cada funcion de peticion HTTP usa los Map del AutoMapper, si es un GET retorna todo en ViewModel para que pueda leerse desde la vista. Si es un POST o PUT se pasa de ViewModel a objeto Entity para poder insertarlo en la BD por ejemplo.
     
     Las funciones de peticiones se usan desde los archivos js, cada peticion retorna un objeto de GenericResponse que contiene un estado, mensaje, objeto, etc. para que cuando se haga el fetch (peticion) desde js se pueda saber como resultó la peticion HTTP.
+    También otra forma de realizar peticiones es con los formularios en las vistas, por ejemplo el login utiliza un form que cuando se hace el submit llama a un metodo POST de login que se encuentra en el controlador de acceso.
     
 Capa IOC -> Donde se encuentran las dependencias del proyecto (la inyeccion de dependencias).
 

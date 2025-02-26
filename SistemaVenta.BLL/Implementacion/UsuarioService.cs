@@ -235,7 +235,7 @@ namespace SistemaVenta.BLL.Implementacion {
                 bool correoEnviado = false;
                 if (htmlCorreo != "") await _correoService.EnviarCorreo(Correo, "Contraseña Restablecida", htmlCorreo);
 
-                if (!correoEnviado) throw new TaskCanceledException("Ha ocurrido un problema al enviar el correo, por favor, intente más tarde");
+                if (!correoEnviado) throw new TaskCanceledException("Ha ocurrido un problema al enviar el correo, por favor, intente más tarde.");
 
                 bool respuesta = await _repositorio.Editar(usuarioEncontrado);
 
