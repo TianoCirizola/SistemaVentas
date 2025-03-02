@@ -19,3 +19,6 @@ Capa AplicacionWeb -> Donde se encuentra la app, los modelos, vistas, controlado
 Capa IOC -> Donde se encuentran las dependencias del proyecto (la inyeccion de dependencias).
 
 FireBase -> Se usa como hosting para las imagenes de los usuarios o lo que sea.
+
+Layout -> Todas las vistas que llamamos con Url.Action se renderizan en el layout en la sección donde se encuentre la sentencia "@RenderBody()". También se pueden usar ViewComponents, se declaran en Views/Shared/Components y se pueden invocar desde el layout o cualquier vista.
+    Las vistas que no quiero que cargen el layout, como la de login, les pongo al comienzo del html un "layout = null".
