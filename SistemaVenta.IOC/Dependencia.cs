@@ -12,6 +12,7 @@ using SistemaVenta.DAL.Interfaces;
 using SistemaVenta.DAL.Implementacion;
 using SistemaVenta.BLL.Interfaces;
 using SistemaVenta.BLL.Implementacion;
+using System.ComponentModel.Design;
 
 namespace SistemaVenta.IOC {
 
@@ -39,7 +40,7 @@ namespace SistemaVenta.IOC {
             services.AddScoped<ITipoDocumentoVentaService, TipoDocumentoVentaService>();
             services.AddScoped<IVentaService, VentaService>();
             services.AddScoped<IDashboardService, DashboardService>();
-
+            services.AddScoped<IMenuService, MenuService>();
         }
     }
 }
